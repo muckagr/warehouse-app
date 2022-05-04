@@ -5,7 +5,8 @@ describe 'Usuário vê detalhes de um galpão' do
     it 'e vê informações adicionais' do
         #Arrange
         Warehouse.create(name: 'Aeroporto SP', codigo: "GRU", cidade: "Guarulhos", 
-        area: 100_000, endereco: 'Avenida do Aeroporto, 1000', cep: '15000-000', descricao: 'Galpão destinado para cargas internacionais')
+        area: 100_000, endereco: 'Avenida do Aeroporto, 1000', cep: '15000-000', 
+            descricao: 'Galpão destinado para cargas internacionais')
 
         #Act
         visit(root_path)
