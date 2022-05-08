@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_03_192150) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_08_181659) do
   create_table "warehouses", force: :cascade do |t|
     t.string "name"
-    t.string "codigo"
-    t.string "cidade"
+    t.string "code"
+    t.string "city"
     t.integer "area"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "cep"
-    t.string "endereco"
-    t.string "descricao"
+    t.string "adress"
+    t.string "description"
   end
 
 end

@@ -1,65 +1,23 @@
-<%# <form method="POST" action="http://127.0.0.1:3000/warehouses">
-    <div>
-        <label for="nome">Nome: </label>
-        <br>
-        <input type="text" name="nome" id="nome"/>
-    </div>
-
-    <div>
-        <label for="cidade">Cidade: </label>
-        <br>
-        <input type="text" name="cidade" id="cidade"/>
-    </div>
-
-    <div>
-        <label for="codigo">Código: </label>
-        <br>
-        <input type="text" name="codigo" id="codigo"/>
-    </div>
-
-    <div>
-        <label for="endereco">Endereço: </label>
-        <br>
-        <input type="text" name="endereco" id="endereco"/>
-    </div>
-
-    <div>
-        <label for="cep">CEP: </label>
-        <br>
-        <input type="text" name="cep" id="cep"/>
-    </div>
-
-    <div>
-        <label for="descricao">Descricao: </label>
-        <br>
-        <input type="textarea" name="descricao" id="descricao"/>
-    </div>
-
-    <div style="margin-top: 10px">
-        <input type="submit" value="Cadastrar Galpão"/>
-    </div>
-</form> %>
-
 <h1>Novo Galpão</h1>
-<%= form_with(model: Warehouse.new) do |f| %>
+<%= form_with(model: @warehouse) do |f| %>
     <div>
         <%= f.label :name, 'Nome'%>
         <%= f.text_field :name %>
     </div>
 
     <div>
-        <%= f.label :cidade, 'Cidade'%>
-        <%= f.text_field :cidade %>
+        <%= f.label :city, 'Cidade'%>
+        <%= f.text_field :city %>
     </div>
 
     <div>
-        <%= f.label :codigo, 'Código'%>
-        <%= f.text_field :codigo %>
+        <%= f.label :code, 'Código'%>
+        <%= f.text_field :code %>
     </div>
 
     <div>
-        <%= f.label :endereco, 'Endereço'%>
-        <%= f.text_field :endereco %>
+        <%= f.label :adress, 'Endereço'%>
+        <%= f.text_field :adress %>
     </div>
 
     <div>
@@ -73,13 +31,12 @@
     </div>
 
     <div>
-        <%= f.label :descricao, 'Descrição'%>
-        <%= f.text_area :descricao %>
+        <%= f.label :description, 'Descrição'%>
+        <%= f.text_area :description %>
     </div>
 
     <div class="button">
         <%= f.submit 'Cadastrar' %>
     </div>
 
-    
 <% end %>

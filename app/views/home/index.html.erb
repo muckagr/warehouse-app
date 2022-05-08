@@ -1,3 +1,6 @@
+<p><%= I18n.translate('hello') %></p>
+<p><%= I18n.localize(Date.today) %></p>
+
 <section id="warehouses">
     <h2>Galpões</h2>
     <%= link_to 'Cadastrar Galpão', new_warehouse_path %>
@@ -6,15 +9,15 @@
             <h3><%=link_to w.name, warehouse_path(w.id) %></h3>
             <dl>
                 <dt>Código: </dt>
-                <dd><%= w.codigo %></dd>
+                <dd><%= w.code %></dd>
                 <dt>Cidade: </dt>
-                <dd><%= w.cidade %></dd>
+                <dd><%= w.city %></dd>
                 <dt>Área: </dt>
                 <dd><%= w.area %> m2</dd>
             </dl>
         </div>
     <% end %>
-
+    
     <% if @warehouses.empty? %>
         <p>Não há galpões cadastrados</p>
     <% end %>

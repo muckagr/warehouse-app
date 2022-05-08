@@ -4,19 +4,20 @@ class WarehousesController < ApplicationController
         @warehouse = Warehouse.find(params[:id])
     end
 
-    def new
-        
+    def new 
+        @warehouse = Warehouse.new()
     end
 
     def create
-        warehouse_params = params.require(:warehouse).permit(:name, :codigo, :cidade, :endereco, :descricao, :area, :cep)
-        w = Warehouse.new(warehouse_params)
+        warehouse_params = params.require(:warehouse).permit(:name, :code, :city, :adress, :description, :area, :cep)
+        @warehouse = Warehouse.new(warehouse_params)
 
-        if w.save()
+        if @warehouse.save
             return redirect_to root_path, notice: 'Galpão cadastrado com SUCESSO!'
         end
-        render new_warehouse_path
 
+        flash.now[:notice] =  'Falha ao cadastrar! Preencha todos os campos.'
+        render 'new'
     end
 
 end

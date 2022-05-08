@@ -4,8 +4,6 @@ describe 'Usuário visita a tela de cadastro' do
 
     it 'Usuario cadastra galpão' do
         #Arrange
-
-
         #Act
         visit(root_path)
         click_on('Cadastrar Galpão')
@@ -23,8 +21,6 @@ describe 'Usuário visita a tela de cadastro' do
 
     it 'com sucesso' do
         #Arrange
-
-
         #Act
         visit root_path
         click_on 'Cadastrar Galpão'
@@ -43,7 +39,18 @@ describe 'Usuário visita a tela de cadastro' do
         expect(page).to have_content('Rio de Janeiro')
         expect(page).to have_content('RIO')
         expect(page).to have_content('32000 m2')
+    end
 
+    it 'Usuário cadastra galpão com dados incompletos' do
+        #Arrange
+        #Act
+        visit root_path
+        click_on 'Cadastrar Galpão'
+        fill_in 'Nome', with: ''
+        fill_in 'Cidade', with: ''
+        click_on 'Cadastrar'
 
+        #Assert
+        expect(page).to have_content('Falha ao cadastrar! Preencha todos os campos.')
     end
 end
