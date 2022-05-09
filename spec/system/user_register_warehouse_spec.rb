@@ -31,7 +31,7 @@ describe 'Usuário visita a tela de cadastro' do
         fill_in 'CEP', with: '20100-000'
         fill_in 'Área', with: '32000'
         fill_in 'Descrição', with: 'Galpão da zona portuária do Rio'
-        click_on 'Cadastrar'
+        click_on 'Enviar'
 
         #Assert
         expect(current_path).to eq root_path
@@ -48,7 +48,7 @@ describe 'Usuário visita a tela de cadastro' do
         click_on 'Cadastrar Galpão'
         fill_in 'Nome', with: ''
         fill_in 'Cidade', with: ''
-        click_on 'Cadastrar'
+        click_on 'Enviar'
 
         #Assert
         expect(page).to have_content('Falha ao cadastrar! Preencha todos os campos.')
