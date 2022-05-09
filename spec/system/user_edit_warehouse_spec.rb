@@ -65,10 +65,6 @@ describe 'usuario edita um galpão' do
         click_on 'Enviar'
 
         #Assertexpect(page).to have_content('Galpão Internacional')
-        expect(page).to have_content('Nome: Aeroporto SP')
-        expect(page).to have_content('Área: 100000')
-        expect(page).to have_content('Endereço: Avenida do Aeroporto, 1000')
-        expect(page).to have_content('CEP: 15000-000')
         expect(page).to have_content('Falha ao atualizar! Preencha todos os campos.')
     end
 end
