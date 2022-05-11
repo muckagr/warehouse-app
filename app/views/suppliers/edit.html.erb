@@ -1,0 +1,11 @@
+<% if @supplier.errors.any? %>
+    <ul>
+        <% @supplier.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<h1>Editar Fornecedor <%= @supplier.brand_name %></h1>
+
+<%= render 'form' %>
