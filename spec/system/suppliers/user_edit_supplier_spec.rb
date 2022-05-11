@@ -6,7 +6,7 @@ describe 'usuario edita um Fornecedor' do
         #Arrange
         supplier = Supplier.create!(corporate_name: "Manaós Industria",                               
         brand_name: "Manaós Soluções Industriais",                        
-        registration_number: "80094614000119",                            
+        registration_number: "8009461400011",                            
         full_adress: "Vieralves, 255",                                    
         city: "Manaus",                                                   
         state: "AM",                                                      
@@ -23,7 +23,7 @@ describe 'usuario edita um Fornecedor' do
         expect(page).to have_field('Cidade', with: 'Manaus')
         expect(page).to have_field('Estado', with: 'AM')
         expect(page).to have_field('Endereço', with: 'Vieralves, 255')
-        expect(page).to have_field('CNPJ', with: '80094614000119')
+        expect(page).to have_field('CNPJ', with: '8009461400011')
         expect(page).to have_field('Razão Social', with: 'Manaós Industria')
         expect(page).to have_field('E-mail', with: 'manaos.solucoes.ind@gmail.com')
         expect(page).to have_field('Nome Fantasia', with: 'Manaós Soluções Industriais')
@@ -33,7 +33,7 @@ describe 'usuario edita um Fornecedor' do
         #Arrange
         supplier = Supplier.create!(corporate_name: "Manaós Industria",                               
         brand_name: "Manaós Soluções Industriais",                        
-        registration_number: "80094614000119",                            
+        registration_number: "8009461400011",                            
         full_adress: "Vieralves, 255",                                    
         city: "Manaus",                                                   
         state: "AM",                                                      
@@ -60,7 +60,7 @@ describe 'usuario edita um Fornecedor' do
         #Arrange
         supplier = Supplier.create!(corporate_name: "Manaós Industria",                               
         brand_name: "Manaós Soluções Industriais",                        
-        registration_number: "80094614000119",                            
+        registration_number: "8009461400011",                            
         full_adress: "Vieralves, 255",                                    
         city: "Manaus",                                                   
         state: "AM",                                                      

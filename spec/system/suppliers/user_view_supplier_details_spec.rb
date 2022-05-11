@@ -6,7 +6,7 @@ describe 'Usuário vê detalhes de um fornecedor' do
         #Arrange
         supplier = Supplier.create!(corporate_name: "Manaós Industria",                               
         brand_name: "Manaós Soluções Industriais",                        
-        registration_number: "80094614000119",                            
+        registration_number: "8009461400011",                            
         full_adress: "Vieralves, 255",                                    
         city: "Manaus",                                                   
         state: "AM",                                                      
@@ -20,7 +20,7 @@ describe 'Usuário vê detalhes de um fornecedor' do
         #Assert
         expect(page).to have_content('Razão Social: Manaós Industria')
         expect(page).to have_content('Nome Fantasia: Manaós Soluções Industriais')
-        expect(page).to have_content('CNPJ: 80094614000119')
+        expect(page).to have_content('CNPJ: 8009461400011')
         expect(page).to have_content('Endereço: Vieralves, 255')
         expect(page).to have_content('Cidade: Manaus')
         expect(page).to have_content('Estado: AM')
@@ -31,7 +31,7 @@ describe 'Usuário vê detalhes de um fornecedor' do
         #Arrange
         supplier = Supplier.create!(corporate_name: "Manaós Industria",                               
         brand_name: "Manaós Soluções Industriais",                        
-        registration_number: "80094614000119",                            
+        registration_number: "8009461400011",                            
         full_adress: "Vieralves, 255",                                    
         city: "Manaus",                                                   
         state: "AM",                                                      

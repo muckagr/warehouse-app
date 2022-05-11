@@ -6,7 +6,7 @@ describe 'Usuário visita a tela de fornecedores ' do
         #Arrange
         supplier = Supplier.create!(corporate_name: "Manaós Industria",                               
         brand_name: "Manaós Soluções Industriais",                        
-        registration_number: "80094614000119",                            
+        registration_number: "8009461400011",                            
         full_adress: "Vieralves, 255",                                    
         city: "Manaus",                                                   
         state: "AM",                                                      

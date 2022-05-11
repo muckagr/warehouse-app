@@ -28,7 +28,7 @@ describe 'Usuário visita a tela de cadastro' do
         click_on('Cadastrar Fornecedor')
         fill_in 'Razão Social', with: 'Manaós Industria'
         fill_in 'Nome Fantasia', with: 'Manaós Soluções Industriais'
-        fill_in 'CNPJ', with: '80094614000119'
+        fill_in 'CNPJ', with: '8009461400011'
         fill_in 'Endereço', with: 'Vieralves, 255'
         fill_in 'Cidade', with: 'Manaus'
         fill_in 'Estado', with: 'AM'
