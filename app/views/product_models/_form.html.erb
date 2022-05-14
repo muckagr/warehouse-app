@@ -1,0 +1,41 @@
+<%= form_with(model: @product_model) do |p| %>
+    <div>
+        <%= p.label :name %>
+        <%= p.text_field :name %>
+    </div>
+
+    <div>
+        <%= p.label :weight %>
+        <%= p.text_field :weight %>
+    </div>
+
+    <div>
+        <%= p.label :width %>
+        <%= p.text_field :width %>
+    </div>
+
+    <div>
+        <%= p.label :height %>
+        <%= p.text_field :height %>
+    </div>
+
+    <div>
+        <%= p.label :depth %>
+        <%= p.text_field :depth %>
+    </div>
+
+    <div>
+        <%= p.label :sku %>
+        <%= p.text_field :sku %>
+    </div>
+
+    <div>
+        <%= p.label :supplier_id %>
+        <%= p.collection_select :supplier_id, Supplier.all, :id, :brand_name %>
+    </div>
+
+    <div>
+        <%= p.submit 'Enviar' %>
+    </div>
+
+<% end %>

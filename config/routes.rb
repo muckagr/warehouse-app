@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   resources :warehouses, only: [:show, :create, :edit, :new, :update, :destroy]
   resources :suppliers, only: [:index, :show, :create, :edit, :new, :update]
-  resources :product_models, only: [:index]
+  resources :product_models, only: [:index, :show, :new, :create, :edit, :update]
   # Defines the root path route ("/")
   # root "articles#index"
 end

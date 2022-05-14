@@ -6,6 +6,8 @@
     </div>
 <%end %>
 
+<%= link_to 'Cadastrar produtos', new_product_model_path %>
+
 <% @product_models.each do |p| %>
     <div>
         <h2><%= p.name %></h2>
