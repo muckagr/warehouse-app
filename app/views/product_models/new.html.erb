@@ -1,11 +1,10 @@
-<h1>Novo Modelo de Produto</h1>
-
 <% if @product_model.errors.any? %>
     <ul>
-        <% @supplier.errors.full_messages.each do |msg| %>
+        <% @product_model.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
         <% end %>
     </ul>
 <% end %>
 
+<h1>Novo Modelo de Produto</h1>
 <%= render 'form' %>
