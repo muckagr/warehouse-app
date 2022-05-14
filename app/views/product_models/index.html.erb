@@ -10,7 +10,7 @@
 
 <% @product_models.each do |p| %>
     <div>
-        <h2><%= p.name %></h2>
+        <h2><%= link_to p.name, product_model_path(p.id) %></h2>
         <dl>
             <dt>Marca: </dt>
             <dd><%= p.supplier.brand_name %></dd>

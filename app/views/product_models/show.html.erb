@@ -7,3 +7,6 @@
     <p><strong>Dimensão</strong>: <%= @product_model.width %>cm x <%= @product_model.height %>cm x <%= @product_model.depth %>cm</p>
     <p><strong>Peso:</strong> <%= @product_model.weight %>g</p>
 </div>
+
+<%= link_to 'Editar', edit_product_model_path(@product_model.id) %>
+<%= link_to 'Voltar', product_models_path %>

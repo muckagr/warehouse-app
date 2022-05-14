@@ -1,0 +1,10 @@
+<% if @product_model.errors.any? %>
+    <ul>
+        <% @product_model.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<h1>Editar Modelo de Produto</h1>
+<%= render 'form' %>

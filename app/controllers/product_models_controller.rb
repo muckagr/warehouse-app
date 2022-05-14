@@ -14,9 +14,19 @@ class ProductModelsController < ApplicationController
         if @product_model.save
             return redirect_to product_model_path(@product_model.id), notice: 'Modelo de produto cadastrado com SUCESSO!'
         end
-        
+
         flash.now[:notice] = 'Falha ao cadastrar! Preencha todos os campos.'
         render 'new'
+    end
+
+    def edit; end
+
+    def update
+        if @product_model.update(product_model_params)
+            return redirect_to product_model_path(@product_model.id), notice: 'Modelo de produto cadastrado com SUCESSO!'
+        end
+        flash.now[:notice] =  'Falha ao atualizar! Preencha todos os campos.'
+        render 'edit'
     end
 
     private

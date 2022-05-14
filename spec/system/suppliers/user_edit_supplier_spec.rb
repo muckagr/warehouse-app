@@ -76,7 +76,7 @@ describe 'usuario edita um Fornecedor' do
         fill_in 'E-mail', with: ''
         click_on 'Enviar'
 
-        #Assertexpect(page).to have_content('Fornecedor Internacional')
+        #Assert
         expect(page).to have_content('Falha ao atualizar! Preencha todos os campos.')
     end
 end
