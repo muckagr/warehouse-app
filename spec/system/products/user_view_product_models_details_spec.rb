@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Usuário vê detalhes de um modelo de produto' do
+describe 'Usuário acessa detalhes de um modelo de produto' do
     it 'e vê informações adicionais' do
         supplier = Supplier.create!(corporate_name: "Manaós Industria", brand_name: "Manaós Soluções Industriais",                        
         registration_number: "8009461400011", full_adress: "Vieralves, 255", city: "Manaus", state: "AM",                                                      

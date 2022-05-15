@@ -14,7 +14,7 @@ describe 'usuário visita a tela de modelo de produto' do
         expect(page).to have_field('Peso')
         expect(page).to have_field('Altura')
         expect(page).to have_field('Largura')
-        expect(page).to have_field('Profundida')
+        expect(page).to have_field('Profundidade')
         expect(page).to have_field('Fornecedor')
         expect(page).to have_field('SKU')
     
@@ -52,6 +52,9 @@ describe 'usuário visita a tela de modelo de produto' do
         supplier = Supplier.create!(corporate_name: 'LG LTDA', brand_name: 'LG',                        
         registration_number: "8009461400011",full_adress: "Vieralves, 255",                                    
         city: "Manaus", state: "AM", email: "lg.atendimento@gmail.com")
+        second_supplier = Supplier.create!(corporate_name: "Maçã do Amor", brand_name: "Apple",                        
+        registration_number: "5009461403011", full_adress: "Rua do Açaí", city: "Manacapuru", state: "AM",                                                      
+        email: "maca-do-amor@expensive.com")
 
         visit(root_path)
         click_on('Modelos de Produtos')
@@ -74,6 +77,9 @@ describe 'usuário visita a tela de modelo de produto' do
         supplier = Supplier.create!(corporate_name: 'LG LTDA', brand_name: 'LG',                        
                 registration_number: "8009461400011",full_adress: "Vieralves, 255",                                    
                 city: "Manaus", state: "AM", email: "lg.atendimento@gmail.com")
+        second_supplier = Supplier.create!(corporate_name: "Maçã do Amor", brand_name: "Apple",                        
+            registration_number: "5009461403011", full_adress: "Rua do Açaí", city: "Manacapuru", state: "AM",                                                      
+            email: "maca-do-amor@expensive.com")
 
         ProductModel.create!(name: 'Soundbar 7.1', weight: 3000, width: 80, height: 15,
                             depth: 20, sku:'SOU71-SAMSU-NOIZ77', supplier: supplier)

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-describe 'usuario edita um modelo de produto' do
+describe 'usuario acessa a tela de edição de produto' do
 
-    it 'Usuario edita modelo de produto' do
+    it 'e vê corretamente todos os campos editáveis e seus valores' do
         #Arrange
         supplier = Supplier.create!(corporate_name: "Manaós Industria", brand_name: "MSI",                        
         registration_number: "8009461400011", full_adress: "Vieralves, 255", city: "Manaus", state: "AM",                                                      
@@ -26,12 +26,15 @@ describe 'usuario edita um modelo de produto' do
         expect(page).to have_select('Fornecedor', selected: 'MSI')
     end
 
-    it 'com sucesso' do
+    it 'e edita com sucesso' do
         #Arrange
-        supplier = Supplier.create!(corporate_name: "Manaós Industria", brand_name: "Manaós Soluções Industriais",                        
+        first_supplier = Supplier.create!(corporate_name: "Manaós Industria", brand_name: "Manaós Soluções Industriais",                        
         registration_number: "8009461400011", full_adress: "Vieralves, 255", city: "Manaus", state: "AM",                                                      
         email: "manaos.solucoes.ind@gmail.com")
-        ProductModel.create!(name: 'TV 32', weight: 8000, width: 70, height: 45, depth: 10, sku:'TV32-MAO-XPTO90', supplier: supplier)
+        second_supplier = Supplier.create!(corporate_name: "Maçã do Amor", brand_name: "Apple",                        
+        registration_number: "5009461403011", full_adress: "Rua do Açaí", city: "Manacapuru", state: "AM",                                                      
+        email: "maca-do-amor@expensive.com")
+        ProductModel.create!(name: 'TV 32', weight: 8000, width: 70, height: 45, depth: 10, sku:'TV32-MAO-XPTO90', supplier: first_supplier)
 
         #Act
         visit(root_path)
@@ -56,7 +59,7 @@ describe 'usuario edita um modelo de produto' do
         expect(page).to have_content('Fornecedor: Manaós Soluções Industriais')
     end
 
-    it 'e mantem os campos obrigatórios' do
+    it 'e valida campos obrigatórios' do
         #Arrange
         supplier = Supplier.create!(corporate_name: "Manaós Industria", brand_name: "Manaós Soluções Industriais",                        
         registration_number: "8009461400011", full_adress: "Vieralves, 255", city: "Manaus", state: "AM",                                                      
