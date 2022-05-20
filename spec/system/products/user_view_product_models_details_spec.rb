@@ -2,11 +2,13 @@ require 'rails_helper'
 
 describe 'Usuário acessa detalhes de um modelo de produto' do
     it 'e vê informações adicionais' do
+        user = User.create!(email: "arthurafk@gmail.com", password: "password", name: "Arthur")
         supplier = Supplier.create!(corporate_name: "Manaós Industria", brand_name: "Manaós Soluções Industriais",                        
         registration_number: "8009461400011", full_adress: "Vieralves, 255", city: "Manaus", state: "AM",                                                      
         email: "manaos.solucoes.ind@gmail.com")
         ProductModel.create!(name: 'TV 32', weight: 8000, width: 70, height: 45, depth: 10, sku:'TV32-MAO-XPTO90', supplier: supplier)
 
+        login_as(user)
         visit(root_path)
         click_on('Modelos de Produtos')
         click_on('TV 32')
@@ -19,12 +21,14 @@ describe 'Usuário acessa detalhes de um modelo de produto' do
 
     it 'e volta para a tela de modelos de produtos' do
         #Arrange
+        user = User.create!(email: "arthurafk@gmail.com", password: "password", name: "Arthur")
         supplier = Supplier.create!(corporate_name: "Manaós Industria", brand_name: "Manaós Soluções Industriais",                        
         registration_number: "8009461400011", full_adress: "Vieralves, 255", city: "Manaus", state: "AM",                                                      
         email: "manaos.solucoes.ind@gmail.com")
         ProductModel.create!(name: 'TV 32', weight: 8000, width: 70, height: 45, depth: 10, sku:'TV32-MAO-XPTO90', supplier: supplier)
         
         #Act
+        login_as(user)
         visit(root_path)
         click_on('Modelos de Produtos')
         click_on('TV 32')

@@ -1,15 +1,25 @@
 require 'rails_helper'
 
 describe 'Usuário vê modelos de produtos' do
-    it 'a partir do menu' do
-        #Arrange
 
+    it 'se estiver autenticado' do
 
-        #Act
         visit(root_path)
         within('nav') do
-            click_on('Produtos')
+            click_on('Modelos de Produtos')
         end
+
+        expect(current_path).to eq new_user_session_path
+    end
+
+    it 'a partir do menu' do
+        #Arrange
+        user = User.create!(email: "arthurafk@gmail.com", password: "password", name: "Arthur")
+
+        #Act
+        login_as(user)
+        visit(root_path)
+        click_on('Modelos de Produtos')
 
         #Assert
         expect(current_path).to eq product_models_path
@@ -17,6 +27,8 @@ describe 'Usuário vê modelos de produtos' do
 
     it 'e vê produtos cadastrados com sucesso' do
         #Arrange
+        user = User.create!(email: "arthurafk@gmail.com", password: "password", name: "Arthur")
+
         supplier = Supplier.create!(corporate_name: "Manaós Industria", brand_name: "Manaós Soluções Industriais",                        
         registration_number: "8009461400011", full_adress: "Vieralves, 255", city: "Manaus", state: "AM",                                                      
         email: "manaos.solucoes.ind@gmail.com")
@@ -25,10 +37,9 @@ describe 'Usuário vê modelos de produtos' do
         ProductModel.create!(name: 'Soundbar 7.1', weight: 3000, width: 80, height: 15, depth: 20, sku:'SOU71-SAMSU-NOIZ77', supplier: supplier)
 
         #Act
+        login_as(user)
         visit(root_path)
-        within('nav') do
-            click_on('Produtos')
-        end
+        click_on('Modelos de Produtos')
 
         #Assert
         expect(page).to have_content('TV 32')
@@ -41,11 +52,12 @@ describe 'Usuário vê modelos de produtos' do
 
     it 'e vê a mensagem de que não há produtos cadastrados' do
         #Arrange
+        user = User.create!(email: "arthurafk@gmail.com", password: "password", name: "Arthur")
+        
         #Act
+        login_as(user)
         visit(root_path)
-        within('nav') do
-            click_on('Produtos')
-        end
+        click_on('Modelos de Produtos')
 
         #Assert
         expect(page).to have_content('Não há produtos cadastrados!')

@@ -4,7 +4,10 @@ describe 'usuário visita a tela de modelo de produto' do
 
     it 'e vê informações de cadastro' do
         #Arrange
+        user = User.create!(email: "arthurafk@gmail.com", password: "password", name: "Arthur")
+
         #Act
+        login_as(user)
         visit(root_path)
         click_on('Modelos de Produtos')
         click_on('Cadastrar produtos')
@@ -22,11 +25,13 @@ describe 'usuário visita a tela de modelo de produto' do
 
     it 'e cadastra um modelo de produto com sucesso' do
         #Arrange
+        user = User.create!(email: "arthurafk@gmail.com", password: "password", name: "Arthur")
         supplier = Supplier.create!(corporate_name: 'LG LTDA', brand_name: 'LG',                        
         registration_number: "8009461400011",full_adress: "Vieralves, 255",                                    
         city: "Manaus", state: "AM", email: "lg.atendimento@gmail.com")
 
         #Act
+        login_as(user)
         visit(root_path)
         click_on('Modelos de Produtos')
         click_on('Cadastrar produtos')
@@ -49,6 +54,7 @@ describe 'usuário visita a tela de modelo de produto' do
     end
 
     it 'e envia com dados incompletos' do
+        user = User.create!(email: "arthurafk@gmail.com", password: "password", name: "Arthur")
         supplier = Supplier.create!(corporate_name: 'LG LTDA', brand_name: 'LG',                        
         registration_number: "8009461400011",full_adress: "Vieralves, 255",                                    
         city: "Manaus", state: "AM", email: "lg.atendimento@gmail.com")
@@ -56,6 +62,7 @@ describe 'usuário visita a tela de modelo de produto' do
         registration_number: "5009461403011", full_adress: "Rua do Açaí", city: "Manacapuru", state: "AM",                                                      
         email: "maca-do-amor@expensive.com")
 
+        login_as(user)
         visit(root_path)
         click_on('Modelos de Produtos')
         click_on('Cadastrar produtos')
@@ -74,6 +81,7 @@ describe 'usuário visita a tela de modelo de produto' do
     end
 
     it 'e envia dados inválidos' do
+        user = User.create!(email: "arthurafk@gmail.com", password: "password", name: "Arthur")
         supplier = Supplier.create!(corporate_name: 'LG LTDA', brand_name: 'LG',                        
                 registration_number: "8009461400011",full_adress: "Vieralves, 255",                                    
                 city: "Manaus", state: "AM", email: "lg.atendimento@gmail.com")
@@ -84,6 +92,7 @@ describe 'usuário visita a tela de modelo de produto' do
         ProductModel.create!(name: 'Soundbar 7.1', weight: 3000, width: 80, height: 15,
                             depth: 20, sku:'SOU71-SAMSU-NOIZ77', supplier: supplier)
 
+        login_as(user)
         visit(root_path)
         click_on('Modelos de Produtos')
         click_on('Cadastrar produtos')

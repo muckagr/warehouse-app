@@ -4,12 +4,14 @@ describe 'usuario acessa a tela de edição de produto' do
 
     it 'e vê corretamente todos os campos editáveis e seus valores' do
         #Arrange
+        user = User.create!(email: "arthurafk@gmail.com", password: "password", name: "Arthur")
         supplier = Supplier.create!(corporate_name: "Manaós Industria", brand_name: "MSI",                        
         registration_number: "8009461400011", full_adress: "Vieralves, 255", city: "Manaus", state: "AM",                                                      
         email: "manaos.solucoes.ind@gmail.com")
         ProductModel.create!(name: 'TV 32', weight: 8000, width: 70, height: 45, depth: 10, sku:'TV32-MAO-XPTO90', supplier: supplier)
 
         #Act
+        login_as(user)
         visit(root_path)
         click_on('Modelos de Produtos')
         click_on('TV 32')
@@ -28,6 +30,7 @@ describe 'usuario acessa a tela de edição de produto' do
 
     it 'e edita com sucesso' do
         #Arrange
+        user = User.create!(email: "arthurafk@gmail.com", password: "password", name: "Arthur")
         first_supplier = Supplier.create!(corporate_name: "Manaós Industria", brand_name: "Manaós Soluções Industriais",                        
         registration_number: "8009461400011", full_adress: "Vieralves, 255", city: "Manaus", state: "AM",                                                      
         email: "manaos.solucoes.ind@gmail.com")
@@ -37,6 +40,7 @@ describe 'usuario acessa a tela de edição de produto' do
         ProductModel.create!(name: 'TV 32', weight: 8000, width: 70, height: 45, depth: 10, sku:'TV32-MAO-XPTO90', supplier: first_supplier)
 
         #Act
+        login_as(user)
         visit(root_path)
         click_on('Modelos de Produtos')
         click_on('TV 32')
@@ -61,12 +65,14 @@ describe 'usuario acessa a tela de edição de produto' do
 
     it 'e valida campos obrigatórios' do
         #Arrange
+        user = User.create!(email: "arthurafk@gmail.com", password: "password", name: "Arthur")
         supplier = Supplier.create!(corporate_name: "Manaós Industria", brand_name: "Manaós Soluções Industriais",                        
         registration_number: "8009461400011", full_adress: "Vieralves, 255", city: "Manaus", state: "AM",                                                      
         email: "manaos.solucoes.ind@gmail.com")
         ProductModel.create!(name: 'TV 32', weight: 8000, width: 70, height: 45, depth: 10, sku:'TV32-MAO-XPTO90', supplier: supplier)
 
         #Act
+        login_as(user)
         visit(root_path)
         click_on('Modelos de Produtos')
         click_on('TV 32')
