@@ -3,7 +3,7 @@
 <%= form_with(model: @order) do |f| %>
     <div>
         <%= f.label :warehouse_id, 'Galpão Destino' %>
-        <%= f.collection_select :warehouse_id, @warehouses, :id, :name %>
+        <%= f.collection_select :warehouse_id, @warehouses, :id, :full_description %>
     </div>
 
     <div>
@@ -13,8 +13,10 @@
 
     <div>
         <%= f.label :estimated_delivery_date, 'Data Prevista de Entrega' %>
-        <%= f.text_field :estimated_delivery_date %>
+        <%= f.date_field :estimated_delivery_date %>
     </div>
 
     <%= f.submit 'Gravar' %>
 <% end %>
+
+<%= link_to 'Voltar', root_path %>

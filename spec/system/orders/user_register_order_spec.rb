@@ -12,7 +12,7 @@ describe 'User register an order' do
     end
 
     it 'sucessfully' do
-        user = User.create!(email: 'arthur@gmail.com', password: 'password', name: 'Arthur')
+        user = User.create!(email: 'arthur@gmail.com', password: 'password', name: 'Arthur Rocha')
         warehouse_2 = Warehouse.create!(name: 'Galpão Aeroporto BSB', code: "BSB", city: "Brasília", 
                 area: 300_000, adress: 'Aeroporto, 101', cep: '70000-000', 
                 description: 'Galpão de eletrônicos importandos')
@@ -25,20 +25,22 @@ describe 'User register an order' do
         supplier = Supplier.create!(corporate_name: "Manaós Industria", brand_name: "Manaós Soluções Industriais", 
                 registration_number: "8009461400011",full_adress: "Vieralves, 255", city: "Manaus", state: "AM", 
                 email: "manaos.solucoes.ind@gmail.com")
+        allow(SecureRandom).to receive(:alphanumeric).with(8).and_return('ABC12345')
         
 
         login_as(user)
         visit(root_path)
         click_on('Registrar Pedido')
-        select warehouse.name, from: 'Galpão Destino'
+        select "#{warehouse.code} | #{warehouse.name}", from: 'Galpão Destino'
         select supplier.corporate_name, from: 'Fornecedor'
         fill_in('Data Prevista de Entrega', with: '20/12/2022')
         click_on('Gravar')
 
         expect(page).to have_content('Pedido cadastrado com SUCESSO!')
-        expect(page).to have_content('Galpão de Destino: Galpão Aeroporto SP')
+        expect(page).to have_content('Pedido ABC12345')
+        expect(page).to have_content('Galpão de Destino: GRU | Galpão Aeroporto SP')
         expect(page).to have_content('Fornecedor: Manaós Industria')
-        expect(page).to have_content('Usuário Responsável: Arthur arthur@gmail.com')
+        expect(page).to have_content('Usuário Responsável: Arthur Rocha - arthur@gmail.com')
         expect(page).to have_content('Data Prevista de Entrega: 20/12/2022')
         expect(page).not_to have_content('Galpão Aeroporto BSB')
         expect(page).not_to have_content('HIHAPPY COM')

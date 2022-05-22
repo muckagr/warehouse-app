@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Usuário se autentica' do
     it 'com sucesso' do
-        User.create!(email: 'arthurafk@gmail.com', password: 'password')
+        User.create!(email: 'arthurafk@gmail.com', password: 'password', name: 'Arthur Rocha')
 
         visit(root_path)
         click_on('Fazer login')
@@ -13,13 +13,13 @@ describe 'Usuário se autentica' do
         expect(page).to have_content('Login efetuado com sucesso.')
         within('nav') do
             expect(page).to have_button 'Deslogar'
-            expect(page).to have_content 'arthurafk@gmail.com'
+            expect(page).to have_content 'Arthur Rocha - arthurafk@gmail.com'
             expect(page).not_to have_link 'Fazer login'
         end
     end
 
     it 'e fez logout' do
-        User.create!(email: 'arthurafk@gmail.com', password: 'password')
+        User.create!(email: 'arthurafk@gmail.com', password: 'password', name: 'Arthur Rocha')
 
         visit(root_path)
         click_on('Fazer login')
@@ -31,7 +31,7 @@ describe 'Usuário se autentica' do
         expect(page).to have_content('Logout efetuado com sucesso.')
         within('nav') do
             expect(page).to have_link 'Fazer login'
-            expect(page).not_to have_content 'arthurafk@gmail.com'
+            expect(page).not_to have_content 'Arthur Rocha - arthurafk@gmail.com'
             expect(page).not_to have_link 'Deslogar'
         end
 

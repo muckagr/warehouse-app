@@ -15,6 +15,9 @@
 
   <body>
     <header>
+    <%= link_to root_path do %>
+      <h1>Galpões & Estoque</h1>
+    <% end %>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="https://github.com/muckagr/warehouse-app" target="blank">WarehouseApp</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +30,7 @@
             <li class="nav-item active"><%= link_to 'Modelos de Produtos', product_models_path, html_options = {class: "nav-link"} %></li>
             <li class="nav-item active"><%= link_to 'Registrar Pedido', new_order_path, html_options = {class: "nav-link"} %></li>
             <% if user_signed_in? %>
-              <li class="nav-item active"><p class="nav-link"><%= current_user.email %></p></li>
+              <li class="nav-item active"><p class="nav-link"><%= current_user.description %></p></li>
               <li class="nav-item active"><%= button_to 'Deslogar', destroy_user_session_path, method: :delete %></li>
             <% else %>
               <li class="nav-item active"><%= link_to 'Fazer login', new_user_session_path, html_options = {class: "nav-link"} %></li>
