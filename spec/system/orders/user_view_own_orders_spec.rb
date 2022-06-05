@@ -18,15 +18,18 @@ describe 'usuário vê seus próprios pedidos' do
         supplier = Supplier.create!(corporate_name: "Manaós Industria", brand_name: "Manaós Soluções Industriais", 
                     registration_number: "8009461400011", full_adress: "Vieralves, 255", city: "Manaus", state: "AM", 
                     email: "manaos.solucoes.ind@gmail.com")
-        order_1 = Order.create!(user: user_1, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 1.day.from_now)
-        order_2 = Order.create!(user: user_2, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 2.day.from_now)
-        order_3 = Order.create!(user: user_2, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 2.day.from_now)
+        order_1 = Order.create!(user: user_1, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 1.day.from_now, status: 'pending')
+        order_2 = Order.create!(user: user_2, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 2.day.from_now, status: 'delivered')
+        order_3 = Order.create!(user: user_2, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 2.day.from_now, status: 'canceled')
 
         login_as(user_1)
         visit(root_path)
         click_on('Meus Pedidos')
 
         expect(page).to have_content(order_1.code)
+        expect(page).to have_content('Pendente')
+        expect(page).not_to have_content('Entregue')
+        expect(page).not_to have_content('Cancelado')
         expect(page).not_to have_content(order_2.code)
         expect(page).not_to have_content(order_3.code)
     end
@@ -52,6 +55,7 @@ describe 'usuário vê seus próprios pedidos' do
         expect(page).to have_content("Fornecedor: #{supplier.corporate_name}")
         formated_date = I18n.localize(1.day.from_now.to_date)
         expect(page).to have_content("Data Prevista de Entrega: #{formated_date}")
+        expect(page).to have_content('Pendente')
 
     end
 

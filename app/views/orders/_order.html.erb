@@ -8,5 +8,8 @@
 
         <dt><%= Order.human_attribute_name(:supplier_id) %>:</dt>
         <dd><%= order.supplier.brand_name %></dd>
+
+        <dt><%= Order.human_attribute_name(:status) %>:</dt>
+        <dd><%= t(order.status) %></dd>
     </dl>
 </div>

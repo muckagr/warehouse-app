@@ -1,11 +1,14 @@
 class Order < ApplicationRecord
-  before_validation :code_generator
-  validate :estimated_delivery_date_is_future
   belongs_to :warehouse
   belongs_to :supplier
   belongs_to :user
+  
+  before_validation :code_generator
 
+  validate :estimated_delivery_date_is_future
   validates :code, :estimated_delivery_date, presence: true
+
+  enum status: { pending: 0, delivered: 5, canceled: 10 }, _default: :pending
 
   private
   def code_generator

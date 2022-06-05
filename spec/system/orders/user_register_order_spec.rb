@@ -41,6 +41,7 @@ describe 'User register an order' do
         expect(page).to have_content('Galpão de Destino: GRU | Galpão Aeroporto SP')
         expect(page).to have_content('Fornecedor: Manaós Industria')
         expect(page).to have_content('Usuário Responsável: Arthur Rocha - arthur@gmail.com')
+        expect(page).to have_content('Status do Pedido: Pendente')
         expect(page).to have_content('Data Prevista de Entrega: 20/12/2022')
         expect(page).not_to have_content('Galpão Aeroporto BSB')
         expect(page).not_to have_content('HIHAPPY COM')
