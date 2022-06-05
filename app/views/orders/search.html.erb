@@ -1,21 +1,6 @@
 <h1>Resultados da Busca por: <%= @code %></h1>
 <p><%= @orders.count%> <%= Order.model_name.human(count: @orders.count) %> <%= t(:found, count: @orders.count) %></p>
 
-<% if !@orders.empty? %>
-    <% @orders.each do |order| %>
-        <div>
-            <dl>
-                <dt><%= Order.human_attribute_name(:code) %>:</dt>
-                <dd><%= order.code %></dd>
-
-                <dt><%= Order.human_attribute_name(:warehouse_id) %>:</dd>
-                <dd><%= order.warehouse.full_description %></dt>
-
-                <dt><%= Order.human_attribute_name(:supplier_id) %>:</dt>
-                <dd><%= order.supplier.brand_name %></dd>
-            </dl>
-        </div>
-    <% end %>
-<% else %>
-    <p>Não existem produtos com o código informado.</p>
+<% @orders.each do |order| %>
+    <%= render order %>
 <% end %>

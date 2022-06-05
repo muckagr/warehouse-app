@@ -6,7 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-User.create!(email: "admin@admin.com.br", password: "password", name: 'Administrador')
+admin = User.create!(email: "admin@admin.com.br", password: "password", name: 'Administrador')
+user_1 = User.create!(name: "Arthur", email: "arthur@email.com", password: "password")
+user_2 = User.create!(name: "Maysa", email: "maysa@email.com", password: "password")
 
 supplier_1 = Supplier.create!(corporate_name: "Manaós Industria",                               
         brand_name: "Manaós Soluções Industriais",                        
@@ -35,3 +37,7 @@ warehouse_2 = Warehouse.create!(name: 'Centro MAO', code: "MAC", city: "Manaus",
 product_1 = ProductModel.create!(name: 'TV 32', weight: 8000, width: 70, height: 45, depth: 10, sku:'TV32-MAO-XPTO90', supplier: supplier_1)
 
 product_2 = ProductModel.create!(name: 'Soundbar 7.1', weight: 3000, width: 80, height: 15, depth: 20, sku:'SOU71-SAMSU-NOIZ77', supplier: supplier_2)
+
+order_1 = Order.create!(user: user_1, warehouse: warehouse_1, supplier: supplier_1, estimated_delivery_date: 1.day.from_now)
+order_2 = Order.create!(user: user_1, warehouse: warehouse_2, supplier: supplier_2, estimated_delivery_date: 2.day.from_now)
+order_3 = Order.create!(user: user_2, warehouse: warehouse_1, supplier: supplier_1, estimated_delivery_date: 2.day.from_now)
