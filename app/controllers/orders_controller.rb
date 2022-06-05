@@ -10,12 +10,19 @@ class OrdersController < ApplicationController
         order_params = params.require(:order).permit(:warehouse_id, :supplier_id, :estimated_delivery_date)
         @order = Order.new(order_params)
         @order.user = current_user
-        if @order.save!
+        if @order.save
             return redirect_to @order, notice: 'Pedido cadastrado com SUCESSO!'
         else
-            flash.now[:notice] = 'Falha ao cadastrar Pedido'
+            @warehouses = Warehouse.all
+            @suppliers = Supplier.all
+            flash.now[:notice] = 'Não foi possível registrar o pedido.'
             render 'new'
         end
+    end
+
+    def search
+        @code = params[:query]
+        @orders = Order.where("code LIKE ?", "%#{@code}%")
     end
 
     def show

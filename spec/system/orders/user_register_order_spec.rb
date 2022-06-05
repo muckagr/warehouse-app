@@ -20,10 +20,10 @@ describe 'User register an order' do
                 area: 100_000, adress: 'Avenida do Aeroporto, 1000', cep: '15000-000', 
                 description: 'Galpão destinado para cargas internacionais')
         supplier_2 = Supplier.create!(corporate_name: "HIHAPPY COM", brand_name: "HIHAPPY", 
-                registration_number: "8009466400011",full_adress: "Shopping Pier21", city: "Brasília", state: "DF", 
+                registration_number: "8009466400011", full_adress: "Shopping Pier21", city: "Brasília", state: "DF", 
                 email: "hihappy.atendimento@gmail.com")
         supplier = Supplier.create!(corporate_name: "Manaós Industria", brand_name: "Manaós Soluções Industriais", 
-                registration_number: "8009461400011",full_adress: "Vieralves, 255", city: "Manaus", state: "AM", 
+                registration_number: "8009461400011", full_adress: "Vieralves, 255", city: "Manaus", state: "AM", 
                 email: "manaos.solucoes.ind@gmail.com")
         allow(SecureRandom).to receive(:alphanumeric).with(8).and_return('ABC12345')
         
@@ -46,4 +46,24 @@ describe 'User register an order' do
         expect(page).not_to have_content('HIHAPPY COM')
     end
 
+    it 'e não informa a data de entrega' do
+        user = User.create!(email: 'arthur@gmail.com', password: 'password', name: 'Arthur Rocha')
+        warehouse = Warehouse.create!(name: 'Galpão Aeroporto BSB', code: "BSB", city: "Brasília", 
+                area: 300_000, adress: 'Aeroporto, 101', cep: '70000-000', 
+                description: 'Galpão de eletrônicos importandos')
+        supplier = Supplier.create!(corporate_name: "HIHAPPY COM", brand_name: "HIHAPPY", 
+                registration_number: "8009466400011", full_adress: "Shopping Pier21", city: "Brasília", state: "DF", 
+                email: "hihappy.atendimento@gmail.com")
+
+        login_as(user)
+        visit(root_path)
+        click_on('Registrar Pedido')
+        select "#{warehouse.code} | #{warehouse.name}", from: 'Galpão Destino'
+        select supplier.corporate_name, from: 'Fornecedor'
+        fill_in('Data Prevista de Entrega', with: '')
+        click_on('Gravar')
+
+        expect(page).to have_content('Não foi possível registrar o pedido')
+        expect(page).to have_content('Data Prevista de Entrega não pode ficar em branco')
+    end
 end

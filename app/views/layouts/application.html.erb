@@ -30,6 +30,13 @@
             <li class="nav-item active"><%= link_to 'Modelos de Produtos', product_models_path, html_options = {class: "nav-link"} %></li>
             <li class="nav-item active"><%= link_to 'Registrar Pedido', new_order_path, html_options = {class: "nav-link"} %></li>
             <% if user_signed_in? %>
+              <li class="nav-item active">
+                <%= form_with url: search_orders_path, method: :get do |f| %>
+                  <%= f.label :query, 'Buscar Pedido' %>
+                  <%= f.text_field :query%>
+                  <%= f.submit 'Buscar' %>
+                <% end %>
+              </li>
               <li class="nav-item active"><p class="nav-link"><%= current_user.description %></p></li>
               <li class="nav-item active"><%= button_to 'Deslogar', destroy_user_session_path, method: :delete %></li>
             <% else %>
