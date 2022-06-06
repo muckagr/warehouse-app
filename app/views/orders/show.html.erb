@@ -24,6 +24,8 @@
     <%= item.quantity %> x <%= item.product_model.name %>
 <% end %>
 
+<%= link_to 'Adicionar Item', new_order_order_item_path(@order) %>
+
 <% if !@order.delivered? %>
     <%= button_to 'Marcar como ENTREGUE', delivered_order_path(@order.id) %>
     <%= button_to 'Marcar como CANCELADO', canceled_order_path(@order.id) %>

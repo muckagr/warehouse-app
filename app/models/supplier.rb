@@ -3,7 +3,7 @@ class Supplier < ApplicationRecord
     validates :corporate_name, :brand_name, :registration_number, :email, uniqueness: true
     validates :registration_number, length: { is: 13 }
 
-    has_many :product_model 
+    has_many :product_models 
     
     # validate :registration_number_can_or_cant_have_special_chars
 
