@@ -2,6 +2,8 @@ class Order < ApplicationRecord
   belongs_to :warehouse
   belongs_to :supplier
   belongs_to :user
+  has_many :order_items
+  has_many :product_models, trough: :order_items
   
   before_validation :code_generator
 
